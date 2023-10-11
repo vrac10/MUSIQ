@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>login</title>
+        <link href='https://fonts.googleapis.com/css?family=Inria Sans' 
+              rel='stylesheet'>
+        <style>
+            #body{
+                background: #04152e;
+            }
+            #titlebarpage2{
+                display: flex;
+                flex-direction: row;
+                line-height: 1;
+                align-items: center;
+                padding-left: 0px;
+                border-radius: 5px;
+                background: #040e1d;
+            }
+            #titlebarpage2 h1{
+                padding-left: 10; 
+                color: rgb(255, 255, 255);
+                font-family: "Inria Sans";
+            }
+            #SL{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: auto;
+                font-family:"Inria Sans";
+                margin-top:14px;
+                color: #ffffff;
+                font-family: "Inria Sans";
+
+            }
+            #bodypage2{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: "Inria Sans";
+            }
+            #username{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 326px;
+                height: 46px;
+                margin-top: 30px;
+                font-family: "Inria Sans";
+            }
+            #email{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 326px;
+                height: 46px;
+                margin-top: 20px;
+                font-family: "Inria Sans";
+            }
+            #password{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 326px;
+                height: 46px;
+                margin-top: 20px;
+                font-family: "Inria Sans";
+            }
+            #signup{
+                display: flex;
+                flex-direction: column;
+                flex-shrink: 0; 
+                align-items: center;
+                border-radius: 27px;
+                width: 326px;
+                height: 46px;
+                margin-top: 20px;
+                border: 0px;
+                background: #EF6D49;
+                font-family: "Inria Sans";     
+            }
+            #login{
+                color: #ffffff;
+                font-family: "Inria Sans";
+            }
+
+        </style>
+    </head>
+    <body id="body">
+        <div id="titlebarpage2">
+            <img src="logo.png" width="73px" height="66px">
+            <h1>MUSIQ</h1>
+        </div>
+        <div id="bodypage2">
+            <div id="SL">
+                <h2>Start Listening</h2>
+            </div>
+            <div id="textinputs">
+                <label name="username"></label>
+                <input type="text" id="username" value="USERNAME" >
+                <br>
+                <input type="text" id="email" value="EMAIL">
+                <br>
+                <input type="password" id="password" value="PASSWORD">
+            </div>
+            <div>
+                <input type="button" id="signup" value="Sign Up">
+            </div>
+            <h4 id="login">Login?</h4>
+        </div>
+
+    </body>
+</html>
