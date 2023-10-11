@@ -1,0 +1,82 @@
+body{
+    margin:0;
+    background: #04152E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input-containers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inria Sans";
+    margin-top: 122px;
+    width: 500px;
+    background-color: #04152E;
+    padding-bottom: 50px;
+}
+
+#titlebar{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0%;
+    width : 100%;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 5px;
+    background: #040E1D;
+}
+
+#titlebar h1{
+    padding-left: 10; 
+    color: rgb(255, 255, 255);
+    font-family: "Inria Sans";
+}
+
+input[type="text"],
+input[type="password"],
+select{
+    border-radius: 10px;
+    border: 0px;
+    background: #FFF;
+    width: 362px;
+    height: 46px;
+}
+input[type="text"],
+input[type="password"],
+select ::placeholder{
+    color: #000;
+    font-family: Inria Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+button{
+    width: 362px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 27px;
+    border : 0px;
+    margin-top: 59px;
+    background: #EF6D49;
+}
+
+#bti{
+    color: #FFF;
+    text-align: center;
+    font-family: Inria Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#sgp{
+    padding-top: 20px;
+    color: #FFF;
+    text-decoration: underline;
+}
