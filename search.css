@@ -1,0 +1,167 @@
+body{
+    display: flex;
+    margin:0;
+    background: #344052;
+    flex-direction: row;
+}
+
+#left{
+    width: 21%;
+    height: 832px;
+    top: -416px;
+    left: -640px;
+    border-radius: 8px;
+    background: #040E1D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}   
+
+#home{
+    display: flex;
+    margin-top: 110px;
+    font-family: Inria Sans;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    letter-spacing: 0em;
+    opacity: 20%;
+    text-align: center;
+    color: aliceblue;
+}
+
+#search{
+    display: flex;
+    width: 256px;
+    height: 82px;
+    margin-top: 40px;
+    top: -82px;
+    left: -636px;
+    border-radius: 11px;
+    border: 1px;
+    font-family: Inria Sans;
+    width: 98%;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    letter-spacing: 0em;
+    color: aliceblue;
+    border-style: solid;
+    border-color: #EF6D49;
+    flex-direction: column;
+    align-items: center;
+}
+
+#playlists{
+    display: flex;
+    font-family: Inria Sans;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 40px;
+    line-height: 38px;
+    letter-spacing: 0em;
+    opacity: 20%;
+    text-align: center;
+    color: aliceblue;
+}
+
+#right{
+    width: 79%;
+    background: #04152E;
+    height: 832px;
+    border-radius: 11px;
+    margin-left: 2px;
+}
+
+#right_search{
+    display: flex;
+    margin-top: 50px;
+    font-family: Inria Sans;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 77px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: aliceblue;
+    font-size: 48px;
+    text-align: center;
+}
+
+#Inputs{
+    display: flex;
+    flex-direction: row;
+}
+
+#songName{
+    display: flex;
+    width: 824px;
+    height: 57px;
+    top: -249px;
+    left: -312px;
+    border-radius: 19px;
+    font-size: x-large;
+    font-family: Inria Sans;
+}
+
+#searchButton{
+    width: 225px;
+    height: 56px;
+    top: -249px;
+    left: 440px;
+    border-radius: 16px;
+    background: #EF6D49;
+    color: aliceblue;
+    margin-left: 30px;
+    border: 0px;
+}
+
+#Images{
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
+}
+
+#img1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 130px;
+    font-size: x-large;
+    font-family: Inria Sans;
+    color: aliceblue;
+}
+#img1 .i1{
+    width: 232px;
+    height: 200px;
+    border-radius: 15px;
+}
+
+#img2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 100px;
+    font-size: x-large;
+    font-family: Inria Sans;
+    color: aliceblue;
+}
+#img2 .i2{
+    width: 232px;
+    height: 200px;
+    border-radius: 15px;
+}
+
+#img3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 100px;
+    font-size: x-large;
+    font-family: Inria Sans;
+    color: aliceblue;
+}
+#img3 .i3{
+    width: 232px;
+    height: 200px;
+    border-radius: 15px;
+}
