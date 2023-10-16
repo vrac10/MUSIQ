@@ -1,2 +1,2 @@
-# WT-Project
-HEllo 
+# MUSIQ
+Wev tech project for sem 3 
