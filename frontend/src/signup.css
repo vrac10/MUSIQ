@@ -1,12 +1,22 @@
-#body{
-    background: #04152e;
+body{
     margin:0;
+    background: #04152E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.main{
+    margin:0;
+    width : 100%;
+}
+
 #titlebarpage2{
     display: flex;
     flex-direction: row;
     line-height: 1;
     align-items: center;
+    width: 100%;
     padding-left: 20px;
     border-radius: 5px;
     background: #040e1d;
@@ -37,7 +47,7 @@ h2{
     flex-direction: column;
     align-items: center;
     font-family: "Inria Sans";
-    margin-top: 50;
+    margin-top: 70px;
 }
 #username{
     display: flex;
@@ -107,8 +117,20 @@ button{
     font-weight: 700;
     line-height: normal;
 }
+
+#bti:hover{
+    background-color: rgb(159, 51, 51);
+    color: rgb(8, 8, 8);
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
 #login{
     color: #ffffff;
     font-family: "Inria Sans";
     text-decoration: underline;
+}
+
+#login:hover{
+    transform: scale(1.01);
 }

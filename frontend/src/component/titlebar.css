@@ -1,0 +1,10 @@
+.titlebar{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0%;
+    width : 100%;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 5px;
+    background: #040E1D;
+}

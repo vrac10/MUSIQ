@@ -30,4 +30,27 @@ router.post('/register', async (req, res) => {
 
 });
 
+router.post('/login', async (req , res) => {
+    const {username, password} = req.body;
+
+    const user = await User.findOne({username: username})
+    if(!user){
+        return res.status(404).json({err: "User not found"});
+    }
+
+    const isPassword = await bcrypt.compare(password, user.password);
+
+    if(!isPassword){
+        return res.status(301).json({err: "Invalid password"});
+    }
+
+    const token = await getToken(user.username,user);
+
+    const userToReturn = {...user.toJSON(),token};
+    delete userToReturn.password;
+
+    return res.status(200).json(userToReturn);
+
+})
+
 export default router;
