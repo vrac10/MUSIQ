@@ -4,6 +4,7 @@ import 'dotenv/config';
 import { ExtractJwt, Strategy } from "passport-jwt";
 import passport from "passport";
 import authRoutes from './routes/auth.js';
+import songRoutes from "./routes/search.js";
 import cors from 'cors';
 const app = express();
 const port = 8000;
@@ -50,6 +51,7 @@ app.get('/', async (req,res) => {
 })
 
 app.use('/auth',authRoutes);
+app.use('/song',songRoutes);
 
 app.listen(port,() => {
     console.log('listening on port 8000');
