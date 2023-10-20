@@ -5,6 +5,8 @@ import { ExtractJwt, Strategy } from "passport-jwt";
 import passport from "passport";
 import authRoutes from './routes/auth.js';
 import songRoutes from "./routes/search.js";
+import playlistRoutes from "./routes/playlist.js";
+import User from "./models/User.js";
 import cors from 'cors';
 const app = express();
 const port = 8000;
@@ -33,7 +35,7 @@ var opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = 'thisKeyIsSupposedToBeSecret';
 passport.use(new Strategy(opts, function(jwt_payload, done) {
-    User.findOne({id: jwt_payload.sub}, function(err, user) {
+    User.findOne({_id: jwt_payload.identifier}, function(err, user) {
         if (err) {
             return done(err, false);
         }
@@ -52,6 +54,7 @@ app.get('/', async (req,res) => {
 
 app.use('/auth',authRoutes);
 app.use('/song',songRoutes);
+app.use('/playlist',playlistRoutes);
 
 app.listen(port,() => {
     console.log('listening on port 8000');

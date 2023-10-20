@@ -2,6 +2,7 @@ import SignUp from './signup';
 import Login from './login';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import Search from './search.js'
 
 function App() {
   const [cookie,setCookie] = useCookies(["token"]);
@@ -12,6 +13,7 @@ function App() {
       {cookie.token?(
         <Routes>
         <Route path='/home' element={<div>Hello</div>}/>
+        <Route path='/search' element={<Search/>}/>
         <Route path='*' element={<Navigate to = "/home" />}/>
         </Routes>
       ):(
