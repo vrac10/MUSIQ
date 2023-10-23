@@ -1,8 +1,8 @@
 import './signup.css'
-import Titlebar from './component/titlebar';
+import Titlebar from '../component/titlebar';
 import { useState } from 'react';
 import {useCookies} from 'react-cookie';
-import {makeUnauthenticatedPostRequest} from './utils/serverHelper.js';
+import {makeUnauthenticatedPostRequest} from '../utils/serverHelper.js';
 import {useNavigate} from 'react-router-dom';
 
 function SignUp(){

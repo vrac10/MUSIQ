@@ -1,26 +1,26 @@
 import "./sidebar.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function SideBar(){
+export default function SideBar(props){
 
-    // const BtnList = document.querySelectorAll('.btn');
-
-    // BtnList.forEach(btn => {
-    //     btn.addEventListener('click',()=>{
-    //         document.querySelectorAll('.clicked').classList.add('.Nclicked');
-    //         document.querySelectorAll('.clicked').classList.remove('.clicked');
-    //         btn.classList.add('.clicked');
-    //         btn.classList.remove('.Nclicked');
-    //         console.log(BtnList);
-    //     })
-    // })
-
+    const navigate = useNavigate();
+    
     return (
         <div className="SideBar">
             <div className="field">
-                <h1 className="HOME_BUTTON clicked btn">Home</h1>
-                <h1 className="SEARCH_BUTTON Nclicked btn">Search</h1>
-                <h1 className="PLAYLISTS_BUTTON Nclicked btn">Playlists</h1>
+                <h1 className={"HOME_BUTTON " + props.HOME_BUTTON + " btn"} onClick={(e) => {
+                    e.preventDefault()
+                    navigate('/home');
+                }}>Home</h1>
+                <h1 className={"SEARCH_BUTTON " + props.SEARCH_BUTTON + " btn"} onClick={(e) => {
+                    e.preventDefault()
+                    navigate('/search');
+                }}>Search</h1>
+                <h1 className={"PLAYLISTS_BUTTON " + props.PLAYLISTS_BUTTON + " btn"} onClick={(e) => {
+                    e.preventDefault()
+                    navigate('/playlist');
+                }}>Playlists</h1>
             </div>
         </div>
     );

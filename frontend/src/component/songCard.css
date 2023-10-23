@@ -1,0 +1,9 @@
+.main{
+    display: flex;
+}
+
+.s{
+    width: 150px;
+    height: 150px;
+    object-fit:scale-down;
+}

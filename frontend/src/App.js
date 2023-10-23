@@ -1,8 +1,10 @@
-import SignUp from './signup';
-import Login from './login';
+import SignUp from './Routes/signup';
+import Login from './Routes/login';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import Search from './search.js'
+import Search from './Routes/search.js'
+import Playlist from './Routes/Playlist';
+import Home from './Routes/Home';
 
 function App() {
   const [cookie,setCookie] = useCookies(["token"]);
@@ -12,8 +14,9 @@ function App() {
     <BrowserRouter>
       {cookie.token?(
         <Routes>
-        <Route path='/home' element={<div>Hello</div>}/>
+        <Route path='/home' element={<Home/>}/>
         <Route path='/search' element={<Search/>}/>
+        <Route path='/playlist' element={<Playlist/>}/>
         <Route path='*' element={<Navigate to = "/home" />}/>
         </Routes>
       ):(

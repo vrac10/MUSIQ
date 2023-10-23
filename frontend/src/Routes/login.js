@@ -1,6 +1,6 @@
 import './Login.css'
-import TitleBar from './component/titlebar.js'
-import {makeUnauthenticatedPostRequest} from './utils/serverHelper.js';
+import TitleBar from '../component/titlebar.js'
+import {makeUnauthenticatedPostRequest} from '../utils/serverHelper.js';
 import { useState } from 'react';
 import {useCookies} from 'react-cookie';
 import {useNavigate} from 'react-router-dom';
