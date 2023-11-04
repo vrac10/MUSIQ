@@ -6,13 +6,16 @@ body{
     align-items: center;
 }
 
-.main{
+.main1{
     width: 100%;
     margin: 0;
+
 }
+
 h1{
     color: white;
 }
+
 #input-containers{
     display: flex;
     flex-direction: column;

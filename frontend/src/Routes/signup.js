@@ -25,11 +25,11 @@ function SignUp(){
             navigate('/home');
         }
         else{
-            alert("BEHENCHOD CHUTIYA HAI KYA!!?");
+            alert("Registration failed");
         }
     }   
 
-    return (<div className='main'>
+    return (<div className='main1'>
         <Titlebar/>
         <div id="bodypage2">
             <div id="SL">

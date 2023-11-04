@@ -10,17 +10,37 @@ async function makeUnauthenticatedPostRequest(route,body) {
     return formattedResponse;
 };
 
-async function makeUnauthenticatedGetRequest(route,body) {
+async function makeUnauthenticatedGetRequest(route) {
     const response = await fetch("http://localhost:8000/" + route, {
-        method : "GET",
-        headers : {
-            "Content-Type": "application/json",
-        },
-        body : JSON.stringify(body),
+        method : "GET"
+        // headers : {
+        //     "Content-Type": "application/json",
+        // },
     });
     const formattedResponse = await response.json();
     return formattedResponse;
 };
 
 
-export {makeUnauthenticatedPostRequest,makeUnauthenticatedGetRequest};
+async function makeAuthenticatedGetRequest(route) {
+    var token = getToken();
+    const response = await fetch("http://localhost:8000/" + route, {
+        method : "GET",
+        headers : {
+            // "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+    });
+    const formattedResponse = await response.json();
+    return formattedResponse;
+};
+
+const getToken = () => {
+    const accessToken = document.cookie.replace(
+        /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+        "$1"
+    );
+    return accessToken;
+};
+
+export {makeUnauthenticatedPostRequest,makeUnauthenticatedGetRequest, makeAuthenticatedGetRequest};

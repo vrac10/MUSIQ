@@ -29,6 +29,16 @@ router.get('/get/playlist/:playlistId', passport.authenticate('jwt',{session : f
     return res.status(200).json(playlist);
 })
 
+router.get('/get/playlists', passport.authenticate('jwt',{session : false}), async (req, res) => {
+    const user = req.user;
+    const playlists = await PlaylistModel.find({owner : user.id});
+    if(!playlists){
+        return res.status(301).json({err : 'Playlists Not Found'});
+    }
+
+    return res.status(200).json(playlists);
+})
+
 router.post('/add/song',passport.authenticate('jwt', {session : false}), async (req,res) => {
     const currentUser = req.user;
     const {playlistId, songId} = req.body;

@@ -1,9 +1,17 @@
-.main{
-    display: flex;
+.SongCards{
+    background-color:#04152E;
+    /* #04152E */
+    display : flex;
+    flex-direction: column;
+    font-family: "Inria Sans";
+    color: aliceblue;
+    height : 270px;
+    width: 223px;
+    border-radius: 15px;
+    margin-left: 40px;
 }
-
-.s{
-    width: 150px;
-    height: 150px;
-    object-fit:scale-down;
+.SCimg{
+    height: 200px;
+    width: 223px;
+    border-radius: 30px;
 }

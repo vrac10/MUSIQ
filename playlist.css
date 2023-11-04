@@ -1,0 +1,144 @@
+body{
+    display: flex;
+    margin:0;
+    background: #344052;
+    flex-direction: row;
+}
+#imagetopcorner{
+    width: 47px;
+    height: 48px;
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    mix-blend-mode: multiply;
+}
+
+#leftplaylist{
+    width: 21%;
+    height: 832px;
+    top: -416px;
+    left: -640px;
+    border-radius: 8px;
+    background: #040E1D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#homeplaylist{
+    width: 256px;
+    height: 82px;
+    margin-top: 100px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inria Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+}
+#searchplaylist{
+    width: 256px;
+    height: 82px;
+    margin-top: 107px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inria Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+}
+#playlistplaylist{
+    width: 256px;
+    height: 82px;
+    margin-top: 100px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inria Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+}
+#right{
+    width: 79%;
+    background: #04152E;
+    height: 832px;
+    border-radius: 11px;
+    margin-left: 2px;
+}
+
+#rightdiv1{
+    padding: 10px;
+    height: 95px;
+    width: 300px;
+} 
+#rightdiv2{
+    display: flex;
+    width: 301px;
+    height: 58px;
+    margin-top: 40px;
+    margin-left: 65px;
+    margin-bottom: 100px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0; 
+    color: #FFF;
+    font-family: Inria Sans;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#playlistplaylist1{
+    display: flex;
+    width: 276px;
+    height: 86px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0; 
+    color: #FFF;
+    text-align: center;
+    font-family: Inria Sans;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+    margin-bottom: 50px;
+
+}
+
+  
+.clearfix {
+    display: flex;
+    justify-content: space-between;
+
+ }
+ * {
+    box-sizing: border-box;
+}
+.playlist{
+    width: 223px;
+    height: 200px;
+    flex-shrink: 0; 
+    margin-left: 150px;
+}
+.playlistname{
+    display: flex;
+    width: 223px;
+    height: 58px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Inria Sans;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+
+

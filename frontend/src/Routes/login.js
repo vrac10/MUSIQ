@@ -37,11 +37,11 @@ function Login() {
     }
 
 
-    return (<div className='main'>   
+    return (<div className='main1'>   
     <TitleBar/> 
     <div id="input-containers">
         <h1>LOGIN</h1>
-        <input type="text" id="Email" placeholder="Email"
+        <input type="text" id="Email" placeholder="Username"
         className="wide-input input-field" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
         <br/>
         <input type="password" id="Password"  placeholder="Password"

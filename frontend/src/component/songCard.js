@@ -1,11 +1,13 @@
-import './songCard.css';
+import React from "react";
+import './SongCard.css'
 
-const songCard = () => {
-    return <div className="main">
-        <div className="s" style={{backgroundImage: `url("https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg")`}}>
-        
+export default function SongCard(props){
+    return(
+        <div className="SongCards">
+            <div className="SCimg">
+                <img src={(props.imgSC)} alt="song card" width={223} height={200} />
+            </div>
+            <h1>{props.name}</h1>
         </div>
-    </div>
+    )
 }
-
-export default songCard;
