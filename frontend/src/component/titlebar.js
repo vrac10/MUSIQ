@@ -3,7 +3,7 @@ import './titlebar.css';
 
 function titlebar(){
     return <div id="titlebar">
-            <img src="./logo.png" width="73px" height="66px" alt = "img" />
+            <img src="../music.png" width="73px" height="66px" alt = "img" />
             <h1>MUSIQ</h1>
             </div>
 }

@@ -17,7 +17,7 @@
     margin: 0;
     padding-left: 20px;
     padding-top: 100px;
-    width:80%;
+    width:75%;
     justify-content: center;
 }
 
@@ -34,10 +34,11 @@
 }
 
 .userName{
-    width: 100%;
+    width: min-content;
     display: flex;
+    padding-top: 15px;
     padding-right: 80px;
-    justify-content: right;
+    justify-content: flex-end;
     font-size: 20px;
     align-items: right;
     color: rgba(255, 255, 255, 0.523);

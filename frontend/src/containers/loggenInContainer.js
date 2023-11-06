@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import songContext from '../context/songContext';
 import {useState } from 'react';
 
-function LoggedInContainer({children}){
+function LoggedInContainer({children, search, home , playlists}){
     
     const [isPaused,setIsPaused] = useState(true)
     const togglePlayPause = () => {
@@ -13,11 +13,12 @@ function LoggedInContainer({children}){
         } else {
             setIsPaused(true);
         }
+        console.log(isPaused);
     };
 
-    return <div className='container'>
+    return (<div className='container'>
         <div className='main'>
-            <SideBar SEARCH_BUTTON = "Nclicked" HOME_BUTTON = "clicked" PLAYLISTS_BUTTON = "Nclicked"/>
+            <SideBar SEARCH_BUTTON = {search} HOME_BUTTON = {home} PLAYLISTS_BUTTON = {playlists}/>
             {children}
         </div>
     <div className='down'>
@@ -31,10 +32,7 @@ function LoggedInContainer({children}){
             <div className='center'>
                 <div className='icon'>
                     <Icon icon="solar:skip-previous-linear" color="white" className='icons' />
-                    <Icon icon= {isPaused
-                                        ? "solar:play-circle-bold"
-                                        : "solar:play-circle-bold"
-                                } color="white" style = {{fontSize: 40}} className='icons' onClick={togglePlayPause} />
+                    <Icon icon= {isPaused?"solar:play-circle-bold":"solar:play-circle-bold"} color="white" style = {{fontSize: 40}} className='icons' onClick={togglePlayPause} />
                     <Icon icon="solar:skip-next-linear" color="white" style= {{fontSize: 23}} className='icons'/>
                     
                 </div>
@@ -47,7 +45,7 @@ function LoggedInContainer({children}){
                 <progress value={0.1}></progress>
             </div>
         </div>
-    </div>
+    </div>)
 }
 
 export default LoggedInContainer;

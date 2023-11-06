@@ -5,9 +5,9 @@ export default function SongCard(props){
     return(
         <div className="SongCards">
             <div className="SCimg">
-                <img src={(props.imgSC)} alt="song card" width={223} height={200} />
+                <img src={(props.imgSC)} alt="song card" width={223} height={200} className="imgOfSong"/>
             </div>
-            <h1>{props.name}</h1>
+            <h1 className="n">{props.name}</h1>
         </div>
     )
 }

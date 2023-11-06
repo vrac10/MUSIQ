@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"; // Import React and useEffect
-import SideBar from "../component/sidebar";
+import React, { useState, useEffect } from "react";
 import SongCard from "../component/SongCard";
 import { makeAuthenticatedGetRequest } from "../utils/serverHelper";
 import './playlist.css';
+import LoggedInContainer from "../containers/loggenInContainer";
 
 function Playlist() {
     const [playlists, setPlaylists] = useState([]);
@@ -23,9 +23,9 @@ function Playlist() {
         fetchPlaylists();
     }, []);
 
+
     return (
-        <div className="main2">
-            <SideBar SEARCH_BUTTON="Nclicked" HOME_BUTTON="Nclicked" PLAYLISTS_BUTTON="clicked" />
+        <LoggedInContainer home = "Nclicked" search = "Nclicked" playlists = "clicked">
             <div className="RightsPlaylist">
                 <div className="headerSide">
                     <div className="PlaylistHeader">
@@ -40,13 +40,13 @@ function Playlist() {
                         <SongCard
                             key={item._id}
                             name={item.name}
-                            imgSC="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+                            imgSC={item.thumbnail}
                         />
                     ))}
                 </div>
             </div>
-        </div>
-    );
-}
+        </LoggedInContainer>
+    )
 
+}
 export default Playlist;

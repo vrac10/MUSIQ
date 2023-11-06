@@ -1,17 +1,31 @@
 .SongCards{
     background-color:#04152E;
-    /* #04152E */
     display : flex;
     flex-direction: column;
     font-family: "Inria Sans";
     color: aliceblue;
-    height : 270px;
-    width: 223px;
-    border-radius: 15px;
-    margin-left: 40px;
-}
-.SCimg{
-    height: 200px;
+    height : 300px;
     width: 223px;
     border-radius: 30px;
+    text-align: center;
+    font-size: 12px;
+    margin-left: 40px;
+}
+
+.SongCards:hover{
+    transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(243, 243, 243, 0.2);
+  cursor: pointer;
+}
+.SCimg{
+    padding-top: 20px;
+    height: 190px;
+    width: 200px;
+    border-radius: 15px;
+
+}
+
+.imgOfSong{
+    object-fit:contain;
+    border-radius: 15px;
 }

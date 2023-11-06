@@ -24,7 +24,7 @@ function Search(){
     }
 
     return (
-        <LoggedInContainer>
+        <LoggedInContainer home = "Nclicked" search = "clicked" playlists = "Nclicked">
             <div className="rightSideSit">
         <div>
             <div id="right_search">
@@ -37,7 +37,6 @@ function Search(){
                 <button id="searchButton" onClick={(e) => {
                     e.preventDefault();
                     makeSearch();
-                    console.log(song)
                 }}><h2 className="x">Search</h2></button>
             </div>
              <div className="SearchResult">
@@ -45,7 +44,7 @@ function Search(){
                      return (<SongCard 
                      key = {item._id}
                      name = {item.name}
-                     imgSrc = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2F7_Rings&psig=AOvVaw1jkmNLMhGER0w9ilQAui8c&ust=1699170625849000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCbqP7tqYIDFQAAAAAdAAAAABAE"
+                     imgSC = {item.thumbnail}
                      />)
                  })}
              </div>
