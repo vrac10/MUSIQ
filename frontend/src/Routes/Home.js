@@ -12,11 +12,8 @@ function Home(){
     if(greeting > 12 && greeting < 17){
         g += "AFTERNOON"
     }
-    else if(greeting > 17 && greeting < 20) {
+    else if(greeting > 17) {
         g += "EVENING"
-    }
-    else if((greeting > 20 || greeting >= 0 )&& greeting < 6){
-        g += "NIGHT"
     }
     else if(greeting > 6 ){
         g += "MORNING"

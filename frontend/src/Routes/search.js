@@ -23,6 +23,7 @@ function Search(){
         }
     }
 
+    
     return (
         <LoggedInContainer home = "Nclicked" search = "clicked" playlists = "Nclicked">
             <div className="rightSideSit">

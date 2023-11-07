@@ -10,22 +10,30 @@
     text-align: center;
     font-size: 12px;
     margin-left: 40px;
+
+}
+
+.n{
+    padding-top: 20px;
 }
 
 .SongCards:hover{
-    transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(243, 243, 243, 0.2);
+  background-color: rgb(86, 86, 111);
   cursor: pointer;
 }
+
 .SCimg{
     padding-top: 20px;
     height: 190px;
     width: 200px;
     border-radius: 15px;
 
+    box-shadow: 2px;
+
 }
 
 .imgOfSong{
     object-fit:contain;
-    border-radius: 15px;
+
+    border-radius: 30px;
 }

@@ -1,0 +1,106 @@
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+.div-addPlaylists{
+    height: 380px;
+    width : 570px;
+    background-color: #17253b;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.Top-addPlaylists{
+    display: flex;
+    width: 570px;
+    flex-direction: row;
+    padding-left: 20px;
+    height: 60px;
+    align-items: center;
+    font-size: 34px;
+}
+
+.main-addPlaylists{
+    display: flex;
+    height : 60%;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.titleOfEdit{
+    padding-right: 58%;
+}
+
+#close-addPlaylists{
+    
+    height: 40px;
+    width: max-content;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.img-addPlaylists{
+    display: flex;
+    height: 220px;
+    width: 220px;
+    padding: 15px;
+    overflow:hidden;
+    box-shadow: #17253b;
+}
+
+.input-addPlaylists{
+    display: flex;
+    flex-direction: column;
+    width: 285px;
+    height: 100%;
+    padding-left: 10px;
+    padding-top: 30px;
+}
+
+#txt-addPlaylists{
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#txtarea-addPlaylists{
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.savebtn-addPlaylists{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    
+}
+
+#save-addPlaylists{
+    margin-left: 450px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color:#d35f12;
+    color: #faebd7;
+    font-family: 'Inria Sans';
+    font-size: large;
+    height : 50px;
+    width : 100px;
+    cursor: pointer;
+    border: 0px;
+}

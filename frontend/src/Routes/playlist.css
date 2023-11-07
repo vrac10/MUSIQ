@@ -3,13 +3,14 @@
     width: 100%;
     height: 100vh;
     margin: 0;
+   
 }
 
 .RightsPlaylist {
     display: flex;
     flex-direction: column;
     width: 75%;
-    padding: 0 30px; /* Combine padding-left and padding-right */
+    padding: 0 30px; 
     margin: 0;
 }
 
@@ -17,34 +18,38 @@
     height: 200px;
     width: 100%;
     display: flex;
-    flex-direction: row; /* Change flex-direction to "row" for horizontal layout */
+    flex-direction: row; 
 }
 
 .PlaylistHeader {
     color: white;
     font-size: 48px;
     padding-top: 90px;
-    font-family: "Inria Sans"; /* Corrected font-family property name */
+    font-family: "Inria Sans"; 
     display: flex;
-    justify-content: flex-start; /* Set to "flex-start" to position on the left */
+    justify-content: flex-start; 
     width: 50%;
     margin: 0;
     padding-left: 35px;
-    height: auto; /* Use "auto" for height to fit content */
+    height: auto; 
 }
 
 .Buttonside {
     padding-top: 90px;
     width: 50%;
-    height: auto; /* Use "auto" for height to fit content */
+    height: auto; 
     margin: 0;
     display: flex;
-    justify-content: flex-end; /* Set to "flex-end" to position on the right */
+    justify-content: flex-end; 
 }
 
+
 .check {
-    display: flex;
     padding-top: 120px;
     height: 100%;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+    gap: 40px; 
+    overflow-x: auto;
+    white-space: nowrap;
 }

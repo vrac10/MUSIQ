@@ -7,13 +7,13 @@ import {useState } from 'react';
 function LoggedInContainer({children, search, home , playlists}){
     
     const [isPaused,setIsPaused] = useState(true)
+    
     const togglePlayPause = () => {
         if (isPaused) {
             setIsPaused(false);
         } else {
             setIsPaused(true);
         }
-        console.log(isPaused);
     };
 
     return (<div className='container'>
@@ -32,7 +32,7 @@ function LoggedInContainer({children, search, home , playlists}){
             <div className='center'>
                 <div className='icon'>
                     <Icon icon="solar:skip-previous-linear" color="white" className='icons' />
-                    <Icon icon= {isPaused?"solar:play-circle-bold":"solar:play-circle-bold"} color="white" style = {{fontSize: 40}} className='icons' onClick={togglePlayPause} />
+                    <Icon icon= {isPaused?"solar:play-circle-bold":"solar:pause-circle-bold"} color="white" style = {{fontSize: 40}} className='icons' onClick={togglePlayPause} />
                     <Icon icon="solar:skip-next-linear" color="white" style= {{fontSize: 23}} className='icons'/>
                     
                 </div>

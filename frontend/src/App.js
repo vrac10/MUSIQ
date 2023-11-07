@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie';
 import Search from './Routes/search.js'
 import Playlist from './Routes/Playlist';
 import Home from './Routes/Home';
+import PlaylistView from './Routes/PlaylistView.js';
 
 function App() {
   const [cookie,setCookie] = useCookies(["token"]);
@@ -17,7 +18,9 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/search' element={<Search/>}/>
         <Route path='/playlist' element={<Playlist/>}/>
+        <Route path='/playlist/:playlistId' element={<PlaylistView/>}/>
         <Route path='*' element={<Navigate to = "/home" />}/>
+
         </Routes>
       ):(
         <Routes>
