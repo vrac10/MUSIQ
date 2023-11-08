@@ -58,7 +58,9 @@ function PlaylistView() {
             </div>
             <div className="ActionButtons">
                 <Icon icon= {Play?"solar:play-circle-bold":"solar:pause-circle-bold"} color="orange" style = {{fontSize: 50}} className='I' onClick={togglePlayPause} />
-              <PlusSign onClick={()=>{console.log("hello")}}/>
+              <PlusSign onClick={()=>{
+                
+              }}/>
             </div>
           </div>
           <div className="SongList">

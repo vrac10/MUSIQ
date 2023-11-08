@@ -31,6 +31,7 @@
 }
 .x{
     font-size: 20px;
+    padding-right: 6px;
 }
 #songName{
     display: flex;
@@ -53,6 +54,7 @@
     color: aliceblue;
     margin-left: 30px;
     border: 0px;
+    
     text-align: center;
     cursor: pointer;
 }
@@ -66,5 +68,6 @@
 .SearchResult{
     padding-top: 100px;
     display: flex;
+    overflow: hidden;
 
 }

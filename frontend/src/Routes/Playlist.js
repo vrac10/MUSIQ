@@ -31,9 +31,6 @@ function Playlist() {
     const openModal = () => {
         setIsModalOpen(true);
       };
-      
-
-    
     
     const [isModalOpen, setIsModalOpen] = useState(false);
 
