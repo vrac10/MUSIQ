@@ -1,23 +1,33 @@
 import SongCard from "../component/SongCard";
-import SideBar from "../component/sidebar"
 import LoggedInContainer from "../containers/loggenInContainer";
 import { makeUnauthenticatedGetRequest } from "../utils/serverHelper";
 import './search.css';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {Howl, Howler} from "howler";
 import { storage } from "../utils/firebase";
 import {ref, getDownloadURL} from "firebase/storage";
+import songContext from "../context/songContext";
+
+
 
 
 function Search(){
 
     const [search,setSearch] = useState("")
     const [song,setSong] = useState([])
-    const [isPlaying,setIsPlaying] = useState(false)
-
+    // const [isPlaying,setIsPlaying] = useState(false)
+    // const [player,setIsPlayer] = useState()
+    
+    const {
+        songDetails,
+        setSongDetails,
+        currentSong,
+        setCurrentSong,
+        isPaused,
+        setIsPaused,
+    } = useContext(songContext);
 
     const playAudio = (item) => {
-        // Get the download URL for the audio file from Firebase Storage
         const storageref = ref(storage)
         const songsRef = ref(storageref,'Songs')
         const audioFileRef = ref(songsRef,item.name + '.mp3');
@@ -25,19 +35,30 @@ function Search(){
         .then((downloadURL) =>{
 
             const sound = new Howl({
-                src: [downloadURL], // Use the download URL as the audio source
+                src: [downloadURL], 
                 html5: true,
           });
       
-          sound.on('loaderror', function (error) {
+            sound.on('loaderror', function (error) {
                 console.log('Error loading audio:', error);
               });
       
-          sound.on('playerror', function (error) {
+            sound.on('playerror', function (error) {
                 console.log('Error playing audio:', error);
             });
       
-             sound.play();
+            if(!isPaused){
+                currentSong.pause();
+                sound.play();
+                setCurrentSong(sound);
+            }
+            else{
+                sound.play();
+                setIsPaused(false);   
+                setCurrentSong(sound);
+                setSongDetails(song);
+            }
+            
 
         })
         
@@ -51,7 +72,8 @@ function Search(){
         const response = await makeUnauthenticatedGetRequest(route);
         
         if(response && !response.err){
-            setSong(response);
+            setSong(response)
+            
         }
         else{
             console.log(response.err)

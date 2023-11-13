@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SongCard from "../component/SongCard";
 import { makeAuthenticatedGetRequest } from "../utils/serverHelper";
 import './playlist.css';
+import songContext from "../context/songContext.js";
 import PlusSign from "../component/plusSign.js";
 import LoggedInContainer from "../containers/loggenInContainer";
 import PlaylistModal from "../modal/PlaylistModal.js";

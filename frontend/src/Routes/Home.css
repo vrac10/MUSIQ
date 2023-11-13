@@ -82,12 +82,13 @@
 .right{
     width: 20%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .image{
     height: 55px;
     width: 55px;
+    
 }
 
 .x{
@@ -100,7 +101,8 @@
 }
 
 .name{
-    font-size: small;
+    font-size: x-small;
+    padding-top: 1px;
     color: white;
 }
 

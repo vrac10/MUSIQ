@@ -4,9 +4,9 @@ import express from 'express';
 const router = express();
 
 router.post('/upload',async (req,res) => {
-    const {name, thumbnail,track} = req.body;
+    const {name, thumbnail,track,artist} = req.body;
 
-    const newSongData = {name, thumbnail, track};
+    const newSongData = {name, thumbnail, track,artist};
 
     const newSong = await Song.create(newSongData);
 
@@ -26,4 +26,16 @@ router.get('/:songName', async (req, res) =>{
 
  })
 
+ router.get('/get/:songId', async (req, res) => {
+    const songId = req.params.songId;
+  
+    const getSong = await Song.findById(songId);
+  
+    if (!getSong) {
+      return res.status(404).send({ error: 'Song not found' });
+    }
+  
+    return res.status(200).json(getSong);
+  });
+  
 export default router;
