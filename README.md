@@ -1,2 +1,2 @@
 # MUSIQ
-Wev tech project for sem 3 
+Web tech project for sem 3 
