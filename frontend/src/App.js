@@ -14,7 +14,7 @@ import logo from "./component/logo.png"
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
   const [cookie] = useCookies(["token"]);
-  const [soundPlayed, setSoundPlayed] = useState(null);
+  const [currentPlaylist, setCurrentPlaylist] = useState(null);
   const [isPaused, setIsPaused] = useState(true);
   const [songDetails,setSongDetails] = useState([{name : "name", thumbnail : logo,artist : "artist"}]);
   const [currentIndex,setCurrentIndex] = useState(0)
@@ -33,8 +33,8 @@ function App() {
                             setCurrentSong,
                             currentIndex,
                             setCurrentIndex,
-                            soundPlayed,
-                            setSoundPlayed,
+                            currentPlaylist,
+                            setCurrentPlaylist,
                             isPaused,
                             setIsPaused,
                         }}

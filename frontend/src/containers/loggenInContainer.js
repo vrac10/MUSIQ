@@ -2,12 +2,9 @@ import SideBar from '../component/sidebar';
 import songContext from '../context/songContext';
 import '../Routes/Home.css';
 import { Icon } from '@iconify/react';
-import {useContext} from 'react';
+import {useContext,useRef,useState} from 'react';
 
 function LoggedInContainer({children, search, home , playlists}){
-    
-   // const [isPaused,setIsPaused] = useState(true)
-    
     const {
         song,
         songDetails,
@@ -25,42 +22,55 @@ function LoggedInContainer({children, search, home , playlists}){
             if(isPaused) {
                 currentSong.play();
                 setIsPaused(false);
-                console.log(songDetails);
             } else {
-                currentSong.pause()
+               currentSong.pause()
                 setIsPaused(true);
             }
-        }
+         }
       
     };
 
     const playNextSong = () => {
-        // Check if there's a next song in the playlist
-        if (currentIndex < song.length - 1) {
-          const nextIndex = currentIndex + 1;
-          const nextSong = songDetails.soundList[nextIndex];
-    
-          // Update the current index and play the next song
-          setCurrentIndex(nextIndex);
-          currentSong.pause();
-          setCurrentSong(nextSong);
-          nextSong.seek(0);
-        nextSong.play();
-        }
-      };
-
-    const playPrevSong = () => {
-        if (currentIndex > 0) {
-            const nextIndex = currentIndex - 1;
+        if (song != null && song.length > 0){
+            if (currentIndex < song.length - 1) {
+            const nextIndex = currentIndex + 1;
             const nextSong = songDetails.soundList[nextIndex];
-      
-            // Update the current index and play the next song
+        
             setCurrentIndex(nextIndex);
             currentSong.pause();
             setCurrentSong(nextSong);
             nextSong.seek(0);
             nextSong.play();
+            }
+    }
+      };
+
+
+      const [volume, setVolume] = useState(50); 
+
+      const volumeInputRef = useRef(null);
+      const handleVolumeChange = () => {
+        const newVolume = volumeInputRef.current.value;
+        setVolume(newVolume);
+    
+        if (currentSong) {
+          currentSong.volume(newVolume / 100);
         }
+      };
+
+    const playPrevSong = () => {
+        if (song != null && song.length > 0){
+            if (currentIndex > 0) {
+                const nextIndex = currentIndex - 1;
+                const nextSong = songDetails.soundList[nextIndex];
+
+                setCurrentIndex(nextIndex);
+                currentSong.pause();
+                setCurrentSong(nextSong);
+                nextSong.seek(0);
+                nextSong.play();
+            }
+    }
     }
 
     return (<div className='container'>
@@ -89,7 +99,17 @@ function LoggedInContainer({children, search, home , playlists}){
             </div>
 
             <div className='right'>
-                <progress value={0.1}></progress>
+            <Icon icon="game-icons:speaker" color="white" fontSize={30}/>
+                <input
+                        type='range'
+                        id='volume'
+                        ref={volumeInputRef}
+                        min='0'
+                        max='100'
+                        step='1'
+                        value={volume}
+                        onChange={handleVolumeChange}
+                />
             </div>
         </div>
     </div>)

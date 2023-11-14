@@ -3,9 +3,7 @@ import LoggedInContainer from "../containers/loggenInContainer";
 import { makeUnauthenticatedGetRequest } from "../utils/serverHelper";
 import './search.css';
 import { useContext, useState } from "react";
-import {Howl, Howler} from "howler";
-import { storage } from "../utils/firebase";
-import {ref, getDownloadURL} from "firebase/storage";
+import {Howl} from "howler";
 import songContext from "../context/songContext";
 
 
@@ -14,30 +12,38 @@ import songContext from "../context/songContext";
 function Search(){
 
     const [search,setSearch] = useState("")
-    const [song,setSong] = useState([])
-    // const [isPlaying,setIsPlaying] = useState(false)
-    // const [player,setIsPlayer] = useState()
+    const [songs,setSongs] = useState([])
     
     const {
-        songDetails,
+        setSong,
         setSongDetails,
         currentSong,
         setCurrentSong,
         isPaused,
+        setCurrentIndex,
         setIsPaused,
     } = useContext(songContext);
 
     const playAudio = (item) => {
-        const storageref = ref(storage)
-        const songsRef = ref(storageref,'Songs')
-        const audioFileRef = ref(songsRef,item.name + '.mp3');
-        getDownloadURL(audioFileRef)
-        .then((downloadURL) =>{
+        if(currentSong != null){
+            currentSong.pause();
+            setCurrentIndex(0);
+            setCurrentSong(null);
+            setSong(null);
+        }
+        // const storageref = ref(storage)
+        // const songsRef = ref(storageref,'Songs')
+        // const audioFileRef = ref(songsRef,item.name + '.mp3');
+        // getDownloadURL(audioFileRef)
+       // .then((downloadURL) =>{
 
             const sound = new Howl({
-                src: [downloadURL], 
+                src: [item.track], 
                 html5: true,
-          });
+                onend: () => {
+                    setIsPaused(true);
+                }
+          })
       
             sound.on('loaderror', function (error) {
                 console.log('Error loading audio:', error);
@@ -51,16 +57,17 @@ function Search(){
                 currentSong.pause();
                 sound.play();
                 setCurrentSong(sound);
+                setSongDetails(songs);
             }
             else{
                 sound.play();
                 setIsPaused(false);   
                 setCurrentSong(sound);
-                setSongDetails(song);
+                setSongDetails(songs);
             }
             
 
-        })
+        //})
         
           
       }
@@ -72,7 +79,7 @@ function Search(){
         const response = await makeUnauthenticatedGetRequest(route);
         
         if(response && !response.err){
-            setSong(response)
+            setSongs(response)
             
         }
         else{
@@ -82,6 +89,7 @@ function Search(){
 
     
     return (
+        
         <LoggedInContainer home = "Nclicked" search = "clicked" playlists = "Nclicked">
             <div className="rightSideSit">
         <div>
@@ -98,7 +106,8 @@ function Search(){
                 }}><h2 className="x">Search</h2></button>
             </div>
              <div className="SearchResult">
-                 {song.map((item) =>{
+             
+                 {songs.map((item) =>{
                      return (<SongCard 
                      key = {item._id}
                      name = {item.name}

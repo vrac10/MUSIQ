@@ -1,12 +1,22 @@
 import Song from '../models/Song.js'
 import express from 'express';
+import { storage } from '../firebase-backend.js';
+import { getDownloadURL, ref } from "firebase/storage";
 
 const router = express();
 
 router.post('/upload',async (req,res) => {
-    const {name, thumbnail,track,artist} = req.body;
+    const {name, thumbnail,artist} = req.body;
+
+    const storageRef = ref(storage);
+    const songsref = ref(storageRef, 'Songs');
+    const audioFileRef = ref(songsref, `${name}.mp3`);
+
+
+    const track = await getDownloadURL(audioFileRef);
 
     const newSongData = {name, thumbnail, track,artist};
+   //const newSongData = {name, thumbnail, track,artist};
 
     const newSong = await Song.create(newSongData);
 

@@ -6,8 +6,6 @@ import PlusSign from "../component/plusSign";
 import { makeAuthenticatedGetRequest, makeUnauthenticatedGetRequest } from "../utils/serverHelper";
 import { useParams } from "react-router-dom";
 import AddToPlaylistModal from '../modal/AddToPlaylistModal';
-import { storage } from "../utils/firebase";
-import { getDownloadURL, ref } from "firebase/storage";
 import songContext from "../context/songContext";
 import {Howl} from 'howler'
 
@@ -22,7 +20,7 @@ function PlaylistView() {
     const [thisModalOpen,setThisModalOpen] = useState(false)
  
     const {playlistId} = useParams();
-
+    
     useEffect(() => {
       const fetchPlaylist = async () => {
         try {
@@ -42,15 +40,18 @@ function PlaylistView() {
     }, [playlistId]);
 
     const {
+      song,
       setSong,
       setSongDetails,
       currentSong,
       setCurrentSong,
+      currentPlaylist,
+      setCurrentPlaylist,
       currentIndex,
       setCurrentIndex,
       isPaused,
       setIsPaused,
-  } = useContext(songContext);
+  } = useContext(songContext);  
 
     useEffect(() => {
       const Getsongs = async () => {
@@ -70,26 +71,30 @@ function PlaylistView() {
   
       Getsongs();
       
+      
     }, [tracks]);
 
     
 
     const playlistListening = async () => {
+      if(currentSong !== null){
+        currentSong.pause();
+      }
+      setCurrentPlaylist(playlistId)
       setSong(songs);
-    
       try {
         const soundList = [];
     
         for (const song of songs) {
-          const storageRef = ref(storage);
-          const songsref = ref(storageRef, 'Songs');
-          const audioFileRef = ref(songsref, `${song.name}.mp3`);
+          // const storageRef = ref(storage);
+          // const songsref = ref(storageRef, 'Songs');
+          // const audioFileRef = ref(songsref, `${song.name}.mp3`);
     
           try {
-            const downloadUrl = await getDownloadURL(audioFileRef);
+            //const downloadUrl = await getDownloadURL(audioFileRef);
     
             const sound = new Howl({
-              src: [downloadUrl],
+              src: [song.track],
               onend: () => {
                 setCurrentIndex(soundList.indexOf(sound));
                 if (currentIndex < soundList.length - 1) {
@@ -110,7 +115,6 @@ function PlaylistView() {
           ...songs,
           soundList,
         });
-    
         if (soundList.length > 0) {
           setCurrentSong(soundList[0]);
           soundList[0].play();
@@ -119,6 +123,8 @@ function PlaylistView() {
       } catch (error) {
         console.error("Error loading playlist:", error);
       }
+
+      
     };
     
     
@@ -126,17 +132,25 @@ function PlaylistView() {
     const togglePlayPause = () => {
         if(isPaused) {
             setIsPaused(false);
-            if(currentSong != null){
+            if(currentSong != null && currentPlaylist === playlistId){
                 currentSong.play();
             }
             else{
+              setCurrentPlaylist(playlistId);
               playlistListening();
             }
-        } else {
+        } else if(currentPlaylist !== playlistId){
           currentSong.pause();
-            setIsPaused(true);
+          setCurrentPlaylist(playlistId);
+          playlistListening();
+          setIsPaused(false);
+        }
+        else {
+          currentSong.pause();
+          setIsPaused(true);
         }
     };
+    
 
     const openTheAdderModal = () => {
       setThisModalOpen(true);
@@ -156,7 +170,7 @@ function PlaylistView() {
               <h2 id="playlistDesc">Description of the playlist</h2>
             </div>
             <div className="ActionButtons">
-                <Icon icon= {isPaused?"solar:play-circle-bold":"solar:pause-circle-bold"} color="#d35f12" style = {{fontSize: 30}} className='I' onClick={togglePlayPause} />
+                <Icon icon= {((currentPlaylist === playlistId || (currentPlaylist === null && song !== null)) && !isPaused)?"solar:pause-circle-bold" : "solar:play-circle-bold"} color="#d35f12" style = {{fontSize: 30}} className='I' onClick={togglePlayPause} />
               <PlusSign onClick={openTheAdderModal}/>
             </div>
           </div>
@@ -165,7 +179,7 @@ function PlaylistView() {
             <div className="Titles">
               <div className="NumberTitle">#</div>
               <div className="TitleTitle">Title</div>
-              <div className="DateTitle">Date-Added</div>
+              {/* <div className="DateTitle">Date-Added</div> */}
             </div>
             <div className="SongContainer">
               {songs.map((item,index) => (
@@ -178,6 +192,9 @@ function PlaylistView() {
                       <h1>{item.name}</h1>
                       <h2>{item.artist}</h2>
                     </div>
+                    {/* <div>
+                    {s}
+                    </div> */}
                   </div>
                 ))}
             </div>
