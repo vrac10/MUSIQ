@@ -1,6 +1,4 @@
 import './Home.css';
-import { Icon } from '@iconify/react';
-import { useContext,useState } from 'react';
 import LoggedInContainer from '../containers/loggenInContainer';
 import { useCookies } from 'react-cookie';
 
@@ -26,6 +24,7 @@ function Home(){
 
     return (
         <LoggedInContainer home = "clicked" search = "Nclicked" playlists = "Nclicked">
+        <div className="RightOfHome">
             <div className='gn'>
                 <div className='greeting'>
                     <b>{g}</b>
@@ -34,6 +33,14 @@ function Home(){
                     LogOut
                 </div>
             </div>
+            <div className='ArtistSpecific'>
+                Top Songs :
+                <div className='Artist-Playlists'>
+
+                    
+                </div>
+            </div>
+        </div>
         </LoggedInContainer>
     )
 }

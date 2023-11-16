@@ -86,12 +86,8 @@ function PlaylistView() {
         const soundList = [];
     
         for (const song of songs) {
-          // const storageRef = ref(storage);
-          // const songsref = ref(storageRef, 'Songs');
-          // const audioFileRef = ref(songsref, `${song.name}.mp3`);
-    
+
           try {
-            //const downloadUrl = await getDownloadURL(audioFileRef);
     
             const sound = new Howl({
               src: [song.track],
@@ -179,7 +175,7 @@ function PlaylistView() {
             <div className="Titles">
               <div className="NumberTitle">#</div>
               <div className="TitleTitle">Title</div>
-              {/* <div className="DateTitle">Date-Added</div> */}
+             <div className="DateTitle">Date-Added</div>
             </div>
             <div className="SongContainer">
               {songs.map((item,index) => (

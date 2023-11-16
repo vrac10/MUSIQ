@@ -31,11 +31,6 @@ function Search(){
             setCurrentSong(null);
             setSong(null);
         }
-        // const storageref = ref(storage)
-        // const songsRef = ref(storageref,'Songs')
-        // const audioFileRef = ref(songsRef,item.name + '.mp3');
-        // getDownloadURL(audioFileRef)
-       // .then((downloadURL) =>{
 
             const sound = new Howl({
                 src: [item.track], 
@@ -67,8 +62,6 @@ function Search(){
             }
             
 
-        //})
-        
           
       }
 
