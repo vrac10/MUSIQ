@@ -134,6 +134,17 @@
     color: white;
     padding-left: 32px;
     font-family: "Inria sans";
-    opacity: 70%;
+    /* opacity: 70%; */
+    height: 430px;
     font-size: 30px;
+}
+
+.Artist-Playlists{
+    padding-top: 120px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+    gap: 40px; 
+    overflow-x: auto;
+    white-space: nowrap;
 }

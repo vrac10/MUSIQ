@@ -2,42 +2,26 @@ import { useContext, useEffect, useState } from "react";
 import "./PlaylistView.css";
 import LoggedInContainer from "../containers/loggenInContainer";
 import { Icon } from '@iconify/react';
-import PlusSign from "../component/plusSign";
-import { makeAuthenticatedGetRequest, makeUnauthenticatedGetRequest } from "../utils/serverHelper";
-import { useParams } from "react-router-dom";
-import AddToPlaylistModal from '../modal/AddToPlaylistModal';
+import { makeUnauthenticatedGetRequest } from "../utils/serverHelper";
+import { useLocation, useParams } from "react-router-dom";
 import songContext from "../context/songContext";
 import {Howl} from 'howler'
 
 
 
 
-function PlaylistView() {
+function HomePageAlbums() {
 
     const [tracks,setTracks]= useState([])
     const [songs,setSongs] = useState([])
-    const [playlist,setPlaylist] = useState({})
-    const [thisModalOpen,setThisModalOpen] = useState(false)
- 
-    const {playlistId} = useParams();
 
-    const fetchPlaylist = async () => {
-      try {
-        const response = await makeAuthenticatedGetRequest(
-          `playlist/get/playlist/${playlistId}`
-        );
-        if (!response.err) {
-          setPlaylist(response);
-          setTracks(response.tracks);
-        }
-      } catch (error) {
-        console.error("Error fetching playlist:", error);
-      }
-    };
-    
-    useEffect(() => {
-      fetchPlaylist();
-    }, [playlistId]);
+ 
+    const {albumId} = useParams();
+
+    const location = useLocation();
+    const arrayProp = location.state?.arrayProp || [];
+    const thumbnail = location.state?.thumbnailProp || "";
+    const name = location.state?.nameProp || "";
 
     const {
       song,
@@ -54,7 +38,8 @@ function PlaylistView() {
   } = useContext(songContext);  
 
     useEffect(() => {
-      const Getsongs = async () => {
+        setTracks(arrayProp)
+        const Getsongs = async () => {
         if (tracks.length > 0) {
           try {
             const promises = tracks.map(async (item) => {
@@ -79,7 +64,7 @@ function PlaylistView() {
       if(currentSong !== null){
         currentSong.pause();
       }
-      setCurrentPlaylist(playlistId)
+      setCurrentPlaylist(albumId)
       setSong(songs);
       try {
         const soundList = [];
@@ -127,16 +112,16 @@ function PlaylistView() {
     const togglePlayPause = () => {
         if(isPaused) {
             setIsPaused(false);
-            if(currentSong != null && currentPlaylist === playlistId){
+            if(currentSong != null && currentPlaylist === albumId){
                 currentSong.play();
             }
             else{
-              setCurrentPlaylist(playlistId);
+              setCurrentPlaylist(albumId);
               playlistListening();
             }
-        } else if(currentPlaylist !== playlistId){
+        } else if(currentPlaylist !== albumId){
           currentSong.pause();
-          setCurrentPlaylist(playlistId);
+          setCurrentPlaylist(albumId);
           playlistListening();
           setIsPaused(false);
         }
@@ -147,26 +132,21 @@ function PlaylistView() {
     };
     
 
-    const openTheAdderModal = () => {
-      setThisModalOpen(true);
-    };
-
 
   return (
-    <LoggedInContainer home = "Nclicked" search = "Nclicked" playlists = "clicked">
+    <LoggedInContainer home = "clicked" search = "Nclicked" playlists = "Nclicked">
         <div className="PlaylistPage">
           <div className="Header">
             <div className="ImageContainer">
-              <img src={playlist.thumbnail} alt="Playlist" />
+              <img src={thumbnail} alt="Playlist" />
             </div>
             
             <div className="InfoContainer">
-              <h1 id="playlistName">{playlist.name}</h1>
+              <h1 id="playlistName">{name}</h1>
               <h2 id="playlistDesc">Description of the playlist</h2>
             </div>
             <div className="ActionButtons">
-                <Icon icon= {((currentPlaylist === playlistId || (currentPlaylist === null && song !== null)) && !isPaused)?"solar:pause-circle-bold" : "solar:play-circle-bold"} color="#d35f12" style = {{fontSize: 30}} className='I' onClick={togglePlayPause} />
-              <PlusSign onClick={openTheAdderModal}/>
+                <Icon icon= {((currentPlaylist === albumId || (currentPlaylist === null && song !== null)) && !isPaused)?"solar:pause-circle-bold" : "solar:play-circle-bold"} color="#d35f12" style = {{fontSize: 30}} className='I' onClick={togglePlayPause} />
             </div>
           </div>
           
@@ -187,19 +167,13 @@ function PlaylistView() {
                       <h1>{item.name}</h1>
                       <h2>{item.artist}</h2>
                     </div>
-                    {/* <div>
-                    {s}
-                    </div> */}
                   </div>
                 ))}
             </div>
           </div>
         </div>
-        <AddToPlaylistModal isOpen={thisModalOpen} onClose={() => {
-          fetchPlaylist();
-          setThisModalOpen(false)}} playlistid={playlistId}/>
     </LoggedInContainer>
   );
 }
 
-export default PlaylistView;
+export default HomePageAlbums;

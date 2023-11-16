@@ -2,6 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import Song from '../models/Song.js';
 import PlaylistModel from '../models/Playlist.js';
+import mongoose from 'mongoose';
 
 
 const router = express.Router();
@@ -61,6 +62,18 @@ router.post('/add/song',passport.authenticate('jwt', {session : false}), async (
     return res.status(200).json(playlist);
 
 })  
+
+router.get('/get/frontPage/', async (req, res) => {
+    const userId = mongoose.Types.ObjectId("655634765af9a67ea4e65927")
+    
+    const playlists = await PlaylistModel.find({owner : userId});
+
+    if(playlists.length === 0){
+        return res.status(404).json({err: 'Not Found'});
+    }
+
+    return res.status(200).json(playlists);
+})
 
 export default router;
 

@@ -46,6 +46,18 @@ async function makeAuthenticatedPostRequest(route,body) {
     return formattedResponse;
 };
 
+
+async function makeFrontPageRequest(){
+    const response = await fetch("http://localhost:8000/playlist/get/frontPage", {
+        method : 'GET',
+        headers : {
+            "Content-Type": "application/json",
+        },
+    });
+    const formattedResponse = await response.json();
+    return formattedResponse;
+}
+
 const getToken = () => {
     const accessToken = document.cookie.replace(
         /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
@@ -54,4 +66,4 @@ const getToken = () => {
     return accessToken;
 };
 
-export {makeUnauthenticatedPostRequest,makeUnauthenticatedGetRequest, makeAuthenticatedGetRequest, makeAuthenticatedPostRequest};
+export {makeUnauthenticatedPostRequest,makeUnauthenticatedGetRequest, makeAuthenticatedGetRequest, makeAuthenticatedPostRequest, makeFrontPageRequest};

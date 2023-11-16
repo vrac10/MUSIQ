@@ -12,19 +12,18 @@ function Playlist() {
     const [playlists, setPlaylists] = useState([]);
     const navigate = useNavigate(); 
 
-    useEffect(() => {
-     
-        async function fetchPlaylists() {
-            try {
-                const response = await makeAuthenticatedGetRequest('playlist/get/playlists');
-                if (!response.err) {
-                    setPlaylists(response);
-                }
-            } catch (error) {
-                console.error("Error fetching playlists:", error);
+    async function fetchPlaylists() {
+        try {
+            const response = await makeAuthenticatedGetRequest('playlist/get/playlists');
+            if (!response.err) {
+                setPlaylists(response);
             }
+        } catch (error) {
+            console.error("Error fetching playlists:", error);
         }
+    }
 
+    useEffect(() => {
         fetchPlaylists();
     }, []);
 
@@ -62,7 +61,9 @@ function Playlist() {
                     
                 </div>
             </div>
-            <PlaylistModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <PlaylistModal isOpen={isModalOpen} onClose={() => {
+                fetchPlaylists();
+                setIsModalOpen(false)}} />
         </LoggedInContainer>
     )
 

@@ -9,6 +9,7 @@ import PlaylistView from './Routes/PlaylistView.js';
 import songContext from './context/songContext.js';
 import { useState } from 'react';
 import logo from "./component/logo.png"
+import HomePageAlbums from './Routes/HomePageAlbums.js';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path='/search' element={<Search/>}/>
         <Route path='/playlist' element={<Playlist/>}/>
         <Route path='/playlist/:playlistId' element={<PlaylistView/>}/>
+        <Route path='/album/:albumId' element={<HomePageAlbums/>}/>
         <Route path='*' element={<Navigate to = "/home" />}/>
 
         </Routes>
