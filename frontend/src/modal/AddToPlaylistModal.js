@@ -7,7 +7,7 @@ import PlusSign from '../component/plusSign';
 
 export default function AddSong({isOpen,onClose, playlistid}){
     const [songNameHere, setSongNameHere] = useState("")
-    const [actResponse,setActResponse] = useState([{name: "Song", thumbnail : logo,artist: "artist"}])
+    const [actResponse,setActResponse] = useState([{name: "Song", thumbnail : logo, artist: "artist"}])
     const [condition,setCondition] = useState(true)
     if(!isOpen){
         return null;
@@ -15,16 +15,19 @@ export default function AddSong({isOpen,onClose, playlistid}){
 
     const closeModal = () => {
         setCondition(true)
-        setActResponse([{name: "Song", thumbnail : logo,artist: "artist"}])
+        setActResponse([{name: "Song", thumbnail : logo, artist: "artist"}])
         onClose();
     }
 
 
     const getSongsWithnName = async ()  => {
         const response = await makeUnauthenticatedGetRequest('song/'+songNameHere);
-
-        if(response && !response.err){
+        
+        if(response.length !== 0 && !response.err){
             setActResponse(response);
+        }
+        else{
+            setActResponse([{name: "Song", thumbnail : logo, artist: "artist"}])
         }
     }
 
@@ -36,6 +39,7 @@ export default function AddSong({isOpen,onClose, playlistid}){
             if(addSong && !addSong.err){
                 setCondition(false)
             }
+            
         }
     }
 
@@ -83,10 +87,7 @@ export default function AddSong({isOpen,onClose, playlistid}){
                     {condition?<PlusSign onClick={(e) => {
                         AddSong();
                     }}/>: <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-
                             <circle cx="12" cy="12" r="10" stroke="#5cb85c" stroke-width="2" fill="transparent" />
-
-
                             <line x1="7" y1="12" x2="11" y2="16" stroke="#5cb85c" stroke-width="4" />
                             <line x1="11" y1="16" x2="18" y2="8" stroke="#5cb85c" stroke-width="4" />
                             </svg>

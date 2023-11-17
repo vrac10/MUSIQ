@@ -13,7 +13,7 @@
 .div-addSong{
     display: flex;
     flex-direction: column;
-    background-color: #5d7394;
+    background-color: #04152E;
     height: 400px;
     width: 670px;
     color:aliceblue;
@@ -74,7 +74,7 @@
     transform: scale(1.01);
 }
 .result-addSong{
-    background-color: #04152E;
+    background-color: rgba(14, 34, 64, 0.729);
     height : 200px;
     margin-top: 30px;
     margin-bottom: 30px;
