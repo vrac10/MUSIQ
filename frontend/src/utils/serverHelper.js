@@ -1,5 +1,5 @@
-const Site = "https://musiq-api.onrender.com/"
-const local = "http://localhost:8000/"
+const  local = "https://musiq-api.onrender.com/"
+const Site = "http://localhost:8000/"
 
 async function makeUnauthenticatedPostRequest(route,body) {
     const response = await fetch(Site + route, {

@@ -12,7 +12,7 @@ const app = express();
 const port = 8000;
 
 const corsOptions = {
-    origin:'https://musiq-0xmd.onrender.com', 
+    origin:'http://localhost:3000', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
