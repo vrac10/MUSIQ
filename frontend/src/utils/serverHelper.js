@@ -1,5 +1,8 @@
+const Site = "https://musiq-api.onrender.com/"
+const local = "http://localhost:8000/"
+
 async function makeUnauthenticatedPostRequest(route,body) {
-    const response = await fetch("http://localhost:8000/" + route, {
+    const response = await fetch(Site + route, {
         method : "POST",
         headers : {
             "Content-Type": "application/json",
@@ -11,7 +14,7 @@ async function makeUnauthenticatedPostRequest(route,body) {
 };
 
 async function makeUnauthenticatedGetRequest(route) {
-    const response = await fetch("http://localhost:8000/" + route, {
+    const response = await fetch(Site+ route, {
         method : "GET"
     });
     const formattedResponse = await response.json();
@@ -21,7 +24,7 @@ async function makeUnauthenticatedGetRequest(route) {
 
 async function makeAuthenticatedGetRequest(route) {
     var token = getToken();
-    const response = await fetch("http://localhost:8000/" + route, {
+    const response = await fetch(Site + route, {
         method : "GET",
         headers : {
             // "Content-Type": "application/json",
@@ -34,7 +37,7 @@ async function makeAuthenticatedGetRequest(route) {
 
 async function makeAuthenticatedPostRequest(route,body) {
     var token = getToken();
-    const response = await fetch("http://localhost:8000/" + route, {
+    const response = await fetch(Site + route, {
         method : "POST",
         headers : {
             "Content-Type": "application/json",
@@ -48,7 +51,7 @@ async function makeAuthenticatedPostRequest(route,body) {
 
 
 async function makeFrontPageRequest(){
-    const response = await fetch("http://localhost:8000/playlist/get/frontPage", {
+    const response = await fetch(Site + "playlist/get/frontPage", {
         method : 'GET',
         headers : {
             "Content-Type": "application/json",
