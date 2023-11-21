@@ -2,7 +2,7 @@ import SideBar from '../component/sidebar';
 import songContext from '../context/songContext';
 import '../Routes/Home.css';
 import { Icon } from '@iconify/react';
-import {useContext,useRef,useState} from 'react';
+import {useContext,useRef,useState,useEffect} from 'react';
 
 function LoggedInContainer({children, search, home , playlists}){
     const {
@@ -29,6 +29,21 @@ function LoggedInContainer({children, search, home , playlists}){
          }
       
     };
+
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const updateProgress = () => {
+            if (currentSong) {
+                const newProgress = (currentSong.seek() / currentSong.duration()) * 100;
+                setProgress(newProgress);
+            }
+        };
+
+        const progressInterval = setInterval(updateProgress, 100); // Update every second
+
+        return () => clearInterval(progressInterval);
+    }, [currentSong]);
 
     const playNextSong = () => {
         if (song != null && song.length > 0){
@@ -94,7 +109,7 @@ function LoggedInContainer({children, search, home , playlists}){
                     
                 </div>
                 <div className='progressBar'>
-
+                    <div className='progress' style={{ width: `${progress}%` }}></div>
                 </div>
             </div>
 

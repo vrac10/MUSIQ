@@ -7,3 +7,4 @@ const getToken = async (user) => {
 }
 
 export default getToken;
+

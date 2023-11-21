@@ -16,8 +16,6 @@ router.post('/upload',async (req,res) => {
     const track = await getDownloadURL(audioFileRef);
 
     const newSongData = {name, thumbnail, track,artist};
-   //const newSongData = {name, thumbnail, track,artist};
-
     const newSong = await Song.create(newSongData);
 
     return res.status(200).json(newSong.toJSON());

@@ -20,6 +20,7 @@ function Playlist() {
             }
         } catch (error) {
             console.error("Error fetching playlists:", error);
+            alert("Couldnt fetch playlists:", error);
         }
     }
 
