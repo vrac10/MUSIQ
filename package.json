@@ -1,0 +1,17 @@
+{
+  "name": "wt-project",
+  "version": "1.0.0",
+  "description": "It provides a platform for users to stream their favourite music and make playlists according to curate the perfect song experience",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node index.js",
+    "install-client": "cd frontend && npm install",
+    "build-client": "cd frontend && npm run build",
+    "start-client": "cd frontend && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
