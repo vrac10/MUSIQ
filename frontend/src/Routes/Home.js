@@ -50,7 +50,7 @@ function Home(){
     
 
     const logoutfuc = () => {
-        removeCookie('token',{path : '/', domain : 'localhost'});
+        removeCookie('token',{path : '/'});
         alert('You have been logged out');
     }
 
