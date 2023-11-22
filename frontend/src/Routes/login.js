@@ -50,7 +50,9 @@ function Login() {
             e.preventDefault();
             LoginBut();
         }}>Login</button>
-        <a id="sgp" href='signup'>Sign Up?</a>
+        <p id="sgp" onClick={() => {
+            navigate('/signup')
+        }}>Sign Up?</p>
     </div>  
 </div>);
 }

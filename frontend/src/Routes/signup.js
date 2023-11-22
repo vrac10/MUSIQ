@@ -50,7 +50,9 @@ function SignUp(){
                 }}>Sign up</button>
             </div>
             <br/>
-            <a id="login" href="login">Login?</a>
+            <p id="login" onClick={() => {
+                navigate('/login')
+            }} >Login?</p>
         </div>
         </div>);
 }

@@ -129,8 +129,14 @@ button{
     color: #ffffff;
     font-family: "Inria Sans";
     text-decoration: underline;
+    cursor: pointer;
 }
 
 #login:hover{
     transform: scale(1.01);
 }
+
+#sgp{
+    cursor: pointer;
+}
+
